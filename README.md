@@ -1,5 +1,6 @@
 # mybatis-samples
-A project with mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
+A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
+H2 database is used in demo samples because of ease of use
 
 # Project structure
 Project structure is simple. Basically it is a maven project:
@@ -28,14 +29,16 @@ Samples are located under `src/main/java/org.mybatis.samples` directly
 - SpringMyBatisScanExample
 No parameters required. Just run the main method in the class
 
+`Comments in the files and logging should be sufficient to play to see results and with samples regarding annotated and xml mappers, caching, sql invocations`
+
 # Samples
-SpringMyBatisCustomSqlSessionFactoryExample - example with usage custom factory builder in order to
+`SpringMyBatisCustomSqlSessionFactoryExample` - example with usage custom factory builder in order to
 initialize sqlSessionFactory based on mybatis config file and properties and use one of data sources based on environment
 
-SpringMyBatisExample - basic example with xml mapper
+`SpringMyBatisExample` - basic example with xml mapper with caching capabilities
 
-SpringMyBatisMapperConfigExample - example with using mapper for annotated class with CRUD operations
+`SpringMyBatisMapperConfigExample` - example with using mapper for annotated class with CRUD operations
 
-SpringMyBatisScanConfigurerExample - example with locating annotated mappers via scanConfigurer with caching capabilities
+`SpringMyBatisScanConfigurerExample` - example with locating annotated mappers via scanConfigurer with caching capabilities
 
-SpringMyBatisScanExample - example with using scan configuration for scanning annotation based mappers
+`SpringMyBatisScanExample` - example with using scan configuration for scanning annotation based mappers
