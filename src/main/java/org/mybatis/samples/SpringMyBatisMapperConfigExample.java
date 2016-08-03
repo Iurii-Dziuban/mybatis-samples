@@ -7,7 +7,7 @@ import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Example with usage of an annotation mapper
+ * Example with usage of an annotation mapper with CRUD operations
  *
  * Look into the logs for the details.
  * Invocations of TransactionAnnotationDao with caches 1 level with sql session, 2 level within different sessions
