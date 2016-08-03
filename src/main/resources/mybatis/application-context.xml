@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+        http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <bean  id="transactionService" class="org.mybatis.samples.service.TransactionService" >
+        <!-- Example of integration of Mapper as a Dao (spring integration uses proxy) -->
+        <property name="transactionDao" ref="transactionMapper" />
+    </bean>
+
+    <!-- mapper bean -->
+    <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="org.mybatis.samples.xml.TransactionDao" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName"><value>org.h2.Driver</value></property>
+        <property name="url"><value>jdbc:h2:./db/mybatisDb;AUTO_SERVER=TRUE</value></property>
+        <property name="username"><value>sa</value></property>
+        <property name="password"><value></value></property>
+        <property name="maxIdle"><value>2</value></property>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg index="0" ref="dataSource"/>
+    </bean>
+
+    <!-- create test data and tables automatically -->
+    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS" enabled="true">
+        <jdbc:script location="db-scripts/schema-drop-db.sql" />
+        <jdbc:script location="db-scripts/schema-create-db.sql" />
+        <jdbc:script location="db-scripts/schema-populate-db.sql" />
+    </jdbc:initialize-database>
+
+    <!-- Mybatis configuration -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- Warning: datasource can not be set from mybatis-config in this configuration... -->
+        <property name="dataSource" ref="dataSource" />
+
+        <property name="mapperLocations" value="classpath*:mybatis/mappers/mybatis.xml" />
+        <property name="configuration">
+            <bean class="org.apache.ibatis.session.Configuration">
+                <property name="mapUnderscoreToCamelCase" value="true"/>
+            </bean>
+        </property>
+        <!-- configLocation is not used because configuration is specified-->
+        <!-- <property name="configLocation" value="classpath:mybatis/config/mybatis-config.xml" /> -->
+        <property name="databaseIdProvider" ref="databaseIdProvider"/>
+        <property name="environment" value="development" />
+    </bean>
+
+    <!-- Beans for sqlSessionFactory creation -->
+
+    <bean id="vendorProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="SQL Server">sqlserver</prop>
+                <prop key="DB2">db2</prop>
+                <prop key="Oracle">oracle</prop>
+                <prop key="MySQL">mysql</prop>
+                <prop key="H2">h2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
+        <property name="properties" ref="vendorProperties"/>
+    </bean>
+</beans>
