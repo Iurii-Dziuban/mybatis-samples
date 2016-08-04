@@ -19,9 +19,6 @@ Resources
 - Log4j configuration under `src/main/resources/log4j.xml`
 
 # Pom.xml
-Basic maven mybatis plugins capabilities are invokations mvn flyway:clean/flyway:migrate/flyway:repair.
-In case support for couple db migrations needed it can be described in the configuration via maven <executions>
-
 Libraries: mybatis, mybatis spring, spring framework, spring jdbc for spring jdbc migrations, commons-dbcp2 for database connection pool, h2 file based database for ease of db usage, log4j logging (possibility to configure) via slf4j.
 
 # Logging
