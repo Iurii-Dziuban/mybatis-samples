@@ -39,6 +39,7 @@ Samples are located under `src/main/java/org.mybatis.samples` directly
 - SpringMyBatisMapperConfigExample
 - SpringMyBatisScanConfigurerExample
 - SpringMyBatisScanExample
+
 No parameters required. Just run the main method in the class
 
 `Comments in the files and logging should be sufficient to play with samples to see results and experiment with annotated and xml mappers, caching, sql invocations`
