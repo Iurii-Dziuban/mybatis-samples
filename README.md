@@ -55,3 +55,12 @@ initialize sqlSessionFactory based on mybatis config file and properties and use
 `SpringMyBatisScanConfigurerExample` - example with locating annotated mappers via scanConfigurer with caching capabilities
 
 `SpringMyBatisScanExample` - example with using scan configuration for scanning annotation based mappers
+
+# Features
+- Annotated Mapper with CRUD operations and 2-nd level Caching configuration
+- XML Mapper with CRUD operations and 2-nd level Caching configuration
+- Custom sql session factory to be able to read mybatis config file with populating properties and with datasource and environment usage
+- Mapping via MapperFactoryBean and locating annotated mappers via scan package and scanConfigurer
+- Injecting mappers with proxy usage into service beans
+- Samples run with using Dao directly, via Services, via SqlSession created from SqlSessionFactory
+- H2 database usage and population with test data
