@@ -1,4 +1,5 @@
 # mybatis-samples
+[![Build Status](https://travis-ci.org/Iurii-Dziuban/mybatis-samples.svg?branch=master)](https://travis-ci.org/Iurii-Dziuban/mybatis-samples)
 A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
 
 H2 database is used in demo samples because of ease of use
