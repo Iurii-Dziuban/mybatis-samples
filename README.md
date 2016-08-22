@@ -1,5 +1,6 @@
 # mybatis-samples
 [![Build Status](https://travis-ci.org/Iurii-Dziuban/mybatis-samples.svg?branch=master)](https://travis-ci.org/Iurii-Dziuban/mybatis-samples)
+[![Issue Count](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples/badges/issue_count.svg)](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples)
 
 A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
 
