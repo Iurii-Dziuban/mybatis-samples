@@ -1,6 +1,12 @@
 # mybatis-samples
 [![Build Status](https://travis-ci.org/Iurii-Dziuban/mybatis-samples.svg?branch=master)](https://travis-ci.org/Iurii-Dziuban/mybatis-samples)
+[![Coverage Status](https://coveralls.io/repos/github/Iurii-Dziuban/mybatis-samples/badge.svg?branch=master)](https://coveralls.io/github/Iurii-Dziuban/mybatis-samples?branch=master)
+<a href="https://scan.coverity.com/projects/iurii-dziuban-mybatis-samples">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/9962/badge.svg"/>
+</a>
 [![Issue Count](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples/badges/issue_count.svg)](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples)
+[![Dependency Status](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8)
 
 A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
 
