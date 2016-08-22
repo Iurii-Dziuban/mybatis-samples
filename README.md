@@ -7,6 +7,7 @@
 </a>
 [![Issue Count](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples/badges/issue_count.svg)](https://codeclimate.com/github/Iurii-Dziuban/mybatis-samples)
 [![Dependency Status](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Iurii-Dziuban/mybatis-samples/issues)
 
 A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
 
