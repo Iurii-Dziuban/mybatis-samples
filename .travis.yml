@@ -2,5 +2,26 @@ language: java
 jdk:
   - oraclejdk8
   - oraclejdk7
+script:
+  - mvn clean package
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+  - mvn versioneye:update
+  - mvn clean cobertura:cobertura coveralls:report
+
+env:
+  global:
+     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+     #   via the "travis encrypt" command using the project repo's public key
+     - secure: "Oz+mhGFPeDp94TyvBoEm1dM5zrHZFnPxnTmld+nHSXw7jjcubNTKLyBg7YPVPEw+CJ+ribaRo5bk6MlRSL9fsSsiLGH4wJfJoabwDZ2+QM3ZjEtliIGgfp+T2hefMYM4vZlnKNrObeNzV4JR+pmKUqVjkk2jrdcdz9GEkL5PnTqamD1KsoQCH599wE/EAUIkwht4gVIpw7nSUf7OXBAlI0+8i/0IYXNqSGY2b3dap+EKMHGyLbnfj0tt9y0w29bL5TfMFMx4+ilf3WBis13Q+kMuoPOqdC2hJvpl7vBUiOfK2ek1VbWVKf9bT3tBSzE3DAVOPCACpwpL9jhLBm82vBIMhAnsxJaFkfl5SSS7BzfHnhBYrv+ESO3TX+kl0pP12GxZkjU1nud2kzHR+uit9ErrfkO6TZtT8a0zJGxFFUBKpy/ji4rhaY7uV5tUUm34sKX/QawyRuJQkbE2zboHBjvppKVsQAQURf3qllxQuY15SkxGJNPrGQNEHVB54A5pkt01MGT8ZvBaAIicTDe0x+/zy9xK8sItYb8k2UuTkRPUM3cklKFJXiwfzroPVJDJkDRCk5XVjNAJyYB+Q+8uV2ubxFGFCBSQKKwAEDgbMrqM/XxJ72ITcQF7UaChBbZrGOtlEo2MwKN53LeS3CCahKgBskKbm/6zuEidwBkn5cg="
+
+  addons:
+    coverity_scan:
+      project:
+        name: "Iurii-Dziuban/mybatis-samples"
+        description: "Build submitted via Travis CI"
+      notification_email: ydzyuban@gmail.com
+      build_command_prepend: "mvn clean"
+      build_command:   "mvn compile -DskipTests"
+      branch_pattern: master
+
