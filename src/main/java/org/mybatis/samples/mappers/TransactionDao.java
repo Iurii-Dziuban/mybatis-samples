@@ -1,4 +1,4 @@
-package org.mybatis.samples.xml;
+package org.mybatis.samples.mappers;
 
 import org.mybatis.samples.model.Transaction;
 

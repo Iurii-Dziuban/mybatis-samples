@@ -9,7 +9,12 @@
     <!-- Mybatis configuration -->
     <!-- helps to read datasource and all other configuration from the config file -->
     <bean id="sqlSessionFactoryBuilder" class="org.mybatis.samples.factory.CustomSqlSessionFactoryBuilder">
+        <property name="configFile" value="mybatis/config/mybatis-config.xml" />
+        <property name="environment" value="development" />
+        <property name="sqlSessionFactoryBuilder" ref="sessionFactoryBuilder" />
     </bean>
+
+    <bean id="sessionFactoryBuilder" class="org.apache.ibatis.session.SqlSessionFactoryBuilder" />
 
     <!-- session factory creation based on custom session factory builder  factory method-->
     <bean id="sqlSessionFactory" class="org.apache.ibatis.session.SqlSessionFactory" factory-bean="sqlSessionFactoryBuilder" factory-method="create">
@@ -22,7 +27,7 @@
 
     <!-- mapper -->
     <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mybatis.samples.xml.TransactionDao" />
+        <property name="mapperInterface" value="org.mybatis.samples.mappers.TransactionDao" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

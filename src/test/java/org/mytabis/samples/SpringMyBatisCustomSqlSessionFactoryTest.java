@@ -4,15 +4,17 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.samples.model.Transaction;
 import org.mybatis.samples.service.TransactionService;
-import org.mybatis.samples.xml.TransactionDao;
+import org.mybatis.samples.mappers.TransactionDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Created by iurii.dziuban on 02.08.2016.
@@ -59,6 +61,9 @@ public class SpringMyBatisCustomSqlSessionFactoryTest {
 
         // Working because proxy is used
         TransactionDao transactionMapper = applicationContext.getBean("transactionMapper", TransactionDao.class);
-        transactionMapper.findAll();
+        List<Transaction> foundTransactions = transactionMapper.findAll();
+        for (Transaction transaction : foundTransactions) {
+            LOGGER.info(transaction.toString());
+        }
     }
 }

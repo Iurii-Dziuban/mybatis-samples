@@ -38,15 +38,11 @@ public class CustomSqlSessionFactoryBuilder {
      * Factory method to create session factory based on config,
      * environment from config and properties file to populate parameters in config ${param}
      */
-    public SqlSessionFactory create() {
+    public SqlSessionFactory create() throws IOException {
         InputStream inputStream = null;
         Properties properties = null;
-        try {
-            inputStream = Resources.getResourceAsStream(configFile);
-            properties = Resources.getResourceAsProperties("mybatis/config/mybatis.properties");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        inputStream = Resources.getResourceAsStream(configFile);
+        properties = Resources.getResourceAsProperties("mybatis/config/mybatis.properties");
         return sqlSessionFactoryBuilder.build(inputStream, environment, properties);
     }
 }

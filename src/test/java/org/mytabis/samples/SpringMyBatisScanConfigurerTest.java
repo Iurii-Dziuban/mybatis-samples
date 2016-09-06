@@ -5,12 +5,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.samples.mappers.TransactionAnnotationDao;
-import org.mybatis.samples.xml.TransactionDao;
+import org.mybatis.samples.mappers.TransactionDao;
+import org.mybatis.samples.model.Transaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Example with usage of an annotation mapper which is created via Scan Configurer
@@ -24,6 +28,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:mybatis/application-context-scan-configurer.xml"})
 public class SpringMyBatisScanConfigurerTest {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(SpringMyBatisScanConfigurerTest.class);
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -40,7 +46,10 @@ public class SpringMyBatisScanConfigurerTest {
         TransactionAnnotationDao transactionAnnotationDao = applicationContext.getBean(TransactionAnnotationDao.class);
         transactionAnnotationDao.findAll();
         // check caching works
-        transactionAnnotationDao.findAll();
+        List<Transaction> foundTransactions = transactionAnnotationDao.findAll();
+        for (Transaction transaction : foundTransactions) {
+            LOGGER.info(transaction.toString());
+        }
 
         session.close();
     }

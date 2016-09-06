@@ -5,10 +5,14 @@ import org.junit.runner.RunWith;
 import org.mybatis.samples.mappers.TransactionAnnotationDao;
 import org.mybatis.samples.model.Transaction;
 import org.mybatis.samples.service.TransactionAnnotationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * Example with usage of an annotation mapper with CRUD operations
@@ -22,6 +26,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:mybatis/application-context-mapper-config.xml"})
 public class SpringMyBatisMapperConfigTest {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(SpringMyBatisMapperConfigTest.class);
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -42,7 +48,10 @@ public class SpringMyBatisMapperConfigTest {
         transactionService.getTransactionAnnotationDao().deleteTransactionById(3);
 
         TransactionAnnotationDao transactionAnnotationMapper = applicationContext.getBean("transactionAnnotationMapper", TransactionAnnotationDao.class);
-        transactionAnnotationMapper.findAll();
+        List<Transaction> foundTransactions = transactionAnnotationMapper.findAll();
+        for (Transaction transaction : foundTransactions) {
+            LOGGER.info(transaction.toString());
+        }
 
     }
 }

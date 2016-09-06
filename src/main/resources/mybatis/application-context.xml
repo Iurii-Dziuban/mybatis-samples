@@ -13,7 +13,7 @@
 
     <!-- mapper bean -->
     <bean id="transactionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="org.mybatis.samples.xml.TransactionDao" />
+        <property name="mapperInterface" value="org.mybatis.samples.mappers.TransactionDao" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 

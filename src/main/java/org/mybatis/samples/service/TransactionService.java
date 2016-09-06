@@ -1,6 +1,6 @@
 package org.mybatis.samples.service;
 
-import org.mybatis.samples.xml.TransactionDao;
+import org.mybatis.samples.mappers.TransactionDao;
 
 /**
  * Created by iurii.dziuban on 28.07.2016.
