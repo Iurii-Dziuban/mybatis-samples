@@ -23,6 +23,9 @@
     </insert>
 
     <!-- cache 2 level configuration for TransactionDao. Can be commented out and in this case it won't be used-->
-    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+    <cache  eviction="FIFO" flushInterval="60000" size="512" readOnly="true" type="org.mybatis.samples.cache.CustomDefaultCache">
+        <property name="stringProperty" value="foo" />
+        <property name="integerProperty" value="199" />
+    </cache>
 
 </mapper>

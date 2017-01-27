@@ -2,6 +2,7 @@ package org.mybatis.samples.mappers;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.cache.decorators.FifoCache;
+import org.mybatis.samples.cache.CustomDefaultCache;
 import org.mybatis.samples.model.Transaction;
 
 import java.util.List;
@@ -31,7 +32,9 @@ import java.util.List;
 /**
  * Case4: Mapping parameters to named parameters inside sql queries, done via (@Param) with name to be bind to.
  */
-@CacheNamespace(eviction = FifoCache.class, flushInterval=60000, size=512, readWrite=false)
+@CacheNamespace(implementation = CustomDefaultCache.class, eviction = FifoCache.class, flushInterval=60000, size=512, readWrite=false,
+properties = {@Property(name = "stringProperty", value = "${stringProperty}"), @Property(name = "integerProperty", value = "${integerProperty}")}
+)
 public interface TransactionAnnotationDao {
 
     @Results({
@@ -41,8 +44,13 @@ public interface TransactionAnnotationDao {
     @Select("SELECT * FROM TRANSACTIONS")
     List<Transaction> findAll();
 
+    /* Example of using default method in the interface*/
+    default List<Transaction> defaultFindAll() {
+        return findAll();
+    }
+
     @Insert("INSERT INTO TRANSACTIONS (name) VALUES (#{name})")
-    @Options(useGeneratedKeys = true, keyProperty = "ID", keyColumn = "ID")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insertTransaction(Transaction transaction);
 
     @Delete("DELETE FROM TRANSACTIONS where id = #{id}")

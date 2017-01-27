@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mybatis.samples.mappers.TransactionAnnotationDao;
 import org.mybatis.samples.mappers.TransactionDao;
+import org.mybatis.samples.mappers.TransactionRefAnnotationDao;
 import org.mybatis.samples.model.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,8 @@ import java.util.List;
  *
  * TransactionMapper with Type TransactionAnnotationDao is used. However in the application-context transactionMapper is
  * of type org.mybatis.spring.mapper.MapperFactoryBean . It works because actually proxy is created
+ *
+ * Added test for referencing other cache in namespace
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:mybatis/application-context-scan.xml"})
@@ -46,6 +49,16 @@ public class SpringMyBatisScanTest {
         session.close();
 
         TransactionAnnotationDao transactionAnnotationDao = applicationContext.getBean(TransactionAnnotationDao.class);
+        transactionAnnotationDao.findAll();
+        List<Transaction> foundTransactions = transactionAnnotationDao.findAll();
+        for (Transaction transaction : foundTransactions) {
+            LOGGER.info(transaction.toString());
+        }
+    }
+
+    @Test
+    public void testReferenceCache() {
+        TransactionRefAnnotationDao transactionAnnotationDao = applicationContext.getBean(TransactionRefAnnotationDao.class);
         transactionAnnotationDao.findAll();
         List<Transaction> foundTransactions = transactionAnnotationDao.findAll();
         for (Transaction transaction : foundTransactions) {

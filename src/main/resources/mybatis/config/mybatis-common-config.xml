@@ -3,6 +3,11 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties>
+        <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/>
+        <property name="stringProperty" value="bar" />
+        <property name="integerProperty" value="99" />
+    </properties>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
         <setting name="cacheEnabled" value="true"/>
@@ -21,6 +26,10 @@
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
         <setting name="lazyLoadingEnabled" value="false" />
+        <setting name="jdbcTypeForNull" value="NULL" />
+        <setting name="callSettersOnNulls" value="true" />
+        <setting name="logImpl" value="SLF4J"/>
+        <setting name="returnInstanceForEmptyRow" value="true"/>
     </settings>
     <typeAliases>
         <typeAlias alias="Transaction" type="org.mybatis.samples.model.Transaction"/>

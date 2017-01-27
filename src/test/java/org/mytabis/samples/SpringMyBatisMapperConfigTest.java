@@ -22,6 +22,7 @@ import java.util.List;
  *
  * TransactionMapper with Type TransactionAnnotationDao is used. However in the application-context transactionMapper is
  * of type org.mybatis.spring.mapper.MapperFactoryBean . It works because actually proxy is created
+ * Added testing default find
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:mybatis/application-context-mapper-config.xml"})
@@ -43,6 +44,7 @@ public class SpringMyBatisMapperConfigTest {
         transactionService.getTransactionAnnotationDao().findAll();
         // check caching works
         transactionService.getTransactionAnnotationDao().findAll();
+        transactionService.getTransactionAnnotationDao().defaultFindAll();
         transactionService.getTransactionAnnotationDao().insertTransaction(transactionToBeInserted);
         transactionService.getTransactionAnnotationDao().updateTransactionById(2, "Bill Gates");
         transactionService.getTransactionAnnotationDao().deleteTransactionById(3);

@@ -3,6 +3,12 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties>
+        <!-- enabling default property values -->
+        <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/>
+        <property name="stringProperty" value="bar" />
+        <property name="integerProperty" value="99" />
+    </properties>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
         <setting name="cacheEnabled" value="true"/>
@@ -31,8 +37,9 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.h2.Driver" />
                 <property name="url" value="jdbc:h2:./db/mybatisCustomSqlFactoryDb;AUTO_SERVER=TRUE" />
-                <property name="username" value="sa" />
-                <property name="password" value="" />
+                <!-- default property values support -->
+                <property name="username" value="${db.username:sa}" />
+                <property name="password" value="${db.password:}" />
             </dataSource>
         </environment>
     </environments>
