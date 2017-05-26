@@ -1,6 +1,9 @@
 package org.mybatis.samples.mappers;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.CacheNamespaceRef;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import org.mybatis.samples.model.Transaction;
 
 import java.util.List;

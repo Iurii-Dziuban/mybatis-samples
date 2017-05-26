@@ -49,7 +49,8 @@ public class SpringMyBatisMapperConfigTest {
         transactionService.getTransactionAnnotationDao().updateTransactionById(2, "Bill Gates");
         transactionService.getTransactionAnnotationDao().deleteTransactionById(3);
 
-        TransactionAnnotationDao transactionAnnotationMapper = applicationContext.getBean("transactionAnnotationMapper", TransactionAnnotationDao.class);
+        TransactionAnnotationDao transactionAnnotationMapper =
+                applicationContext.getBean("transactionAnnotationMapper", TransactionAnnotationDao.class);
         List<Transaction> foundTransactions = transactionAnnotationMapper.findAll();
         for (Transaction transaction : foundTransactions) {
             LOGGER.info(transaction.toString());

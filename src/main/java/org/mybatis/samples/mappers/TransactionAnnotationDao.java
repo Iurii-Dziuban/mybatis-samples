@@ -1,6 +1,14 @@
 package org.mybatis.samples.mappers;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Property;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.cache.decorators.FifoCache;
 import org.mybatis.samples.cache.CustomDefaultCache;
 import org.mybatis.samples.model.Transaction;
@@ -33,7 +41,8 @@ import java.util.List;
  * Case4: Mapping parameters to named parameters inside sql queries, done via (@Param) with name to be bind to.
  */
 @CacheNamespace(implementation = CustomDefaultCache.class, eviction = FifoCache.class, flushInterval=60000, size=512, readWrite=false,
-properties = {@Property(name = "stringProperty", value = "${stringProperty}"), @Property(name = "integerProperty", value = "${integerProperty}")}
+properties = {@Property(name = "stringProperty", value = "${stringProperty}"),
+        @Property(name = "integerProperty", value = "${integerProperty}")}
 )
 public interface TransactionAnnotationDao {
 

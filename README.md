@@ -10,6 +10,10 @@ A project with demo of mybatis capabilities with spring framework based on http:
 
 H2 database is used in demo samples because of ease of use
 
+# Checks
+
+Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
+
 # Project structure
 Project structure is simple. Basically it is a maven project:
 - Samples under `src/main/java/org.mybatis.samples`
