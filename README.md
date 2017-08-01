@@ -6,10 +6,20 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Iurii-Dziuban/mybatis-samples/issues)
 
-A project with demo of mybatis capabilities with spring framework based on http://www.mybatis.org/spring/index.html
+A project with demo of mybatis capabilities with spring framework based on **http://www.mybatis.org/spring/index.html**
 
 H2 database is used in demo samples because of ease of use
 
+## Table of contents:
+ * [Static Analysis QA Checks](#checks)
+ * [Project structure](#project-structure)
+ * [Libraries](#pomxml)
+ * [Logging configuration](#logging)
+ * [Building project](#building-project)
+ * [Running samples](#running-samples)
+ * [Samples](#samples)
+ * [Features](#features)
+ 
 # Checks
 
 Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
@@ -30,7 +40,14 @@ Resources
 - Log4j configuration under `src/main/resources/log4j.xml`
 
 # Pom.xml
-Libraries: mybatis, mybatis spring, spring framework, spring jdbc for spring jdbc migrations, commons-dbcp2 for database connection pool, h2 file based database for ease of db usage, log4j logging (possibility to configure) via slf4j.
+Libraries: 
+- `mybatis`
+- `mybatis spring`
+- `spring framework`
+- `spring jdbc` for spring jdbc migrations
+- `commons-dbcp2` for database connection pool
+- `h2` file based database for ease of db usage
+- `log4j` logging (possibility to configure) via slf4j.
 
 # Logging
 MyBatis provides logging information through the use of an internal log factory. The internal log factory will delegate logging information to one of the following log implementations:
