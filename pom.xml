@@ -11,7 +11,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.0.RELEASE</spring.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
 
         <java.version>1.8</java.version>
 
@@ -253,12 +253,12 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.3</version>
+                        <version>8.5</version>
                     </dependency>
                     <dependency>
                         <groupId>com.github.sevntu-checkstyle</groupId>
                         <artifactId>sevntu-checkstyle-maven-plugin</artifactId>
-                        <version>1.24.2</version>
+                        <version>1.25.0</version>
                     </dependency>
                 </dependencies>
                 <executions>
