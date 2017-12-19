@@ -6,6 +6,8 @@
 [![Dependency Status](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/57b8aea2090d4d00328f4ff8)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Iurii-Dziuban/mybatis-samples/issues)
 
+A project with mybatis (http://www.mybatis.org/mybatis-3/) capabilities with spring framework
+
 A project with demo of mybatis capabilities with spring framework based on **http://www.mybatis.org/spring/index.html**
 
 H2 database is used in demo samples because of ease of use
@@ -19,10 +21,11 @@ H2 database is used in demo samples because of ease of use
  * [Running samples](#running-samples)
  * [Samples](#samples)
  * [Features](#features)
+ * [Ideas to try](#ideas)
  
 # Checks
 
-Jacoco code coverage, pmd, checkstyle, enforcer, findbugs
+`Jacoco`/`cobertura` code coverage, `pmd`, `checkstyle`, `enforcer`, `findbugs`
 
 # Project structure
 Project structure is simple. Basically it is a maven project:
@@ -50,7 +53,8 @@ Libraries:
 - `log4j` logging (possibility to configure) via slf4j.
 
 # Logging
-MyBatis provides logging information through the use of an internal log factory. The internal log factory will delegate logging information to one of the following log implementations:
+MyBatis provides logging information through the use of an internal log factory. `org.apache.ibatis.logging.LogFactory`
+The internal log factory will delegate logging information to one of the following log implementations, in the following priority:
 - SLF4J
 - Apache Commons Logging
 - Log4j 2
@@ -92,3 +96,5 @@ initialize sqlSessionFactory based on mybatis config file and properties and use
 - Injecting mappers with proxy usage into service beans
 - Samples run with using Dao directly, via Services, via SqlSession created from SqlSessionFactory
 - H2 database usage and population with test data
+
+# Ideas
